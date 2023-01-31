@@ -126,7 +126,9 @@ document.querySelector("button")?.addEventListener("click", function () {
     return alert("Not calculated for that many users!");
   }
   // @ts-ignore
-  document.querySelector("#database-pricing").innerHTML = `${databasePricing}`;
+  document.querySelector("#database-pricing").innerHTML = `${Math.ceil(
+    databasePricing
+  )}`;
   const storagePricing = storagePricingForChannels(
     data.numOfChannels,
     data.averageVideosPerDay,
@@ -134,20 +136,22 @@ document.querySelector("button")?.addEventListener("click", function () {
     data.daysSinceLaunch
   );
   // @ts-ignore
-  document.querySelector("#storage-pricing").innerHTML = `${storagePricing}`;
+  document.querySelector("#storage-pricing").innerHTML = `${Math.ceil(
+    storagePricing
+  )}`;
   const CDNPricing = CDNPricingForUsers(
     data.numOfUsers,
     data.averageWatchTimePerDay
   );
   // @ts-ignore
-  document.querySelector("#cdn-pricing").innerHTML = `${CDNPricing}`;
+  document.querySelector("#cdn-pricing").innerHTML = `${Math.ceil(CDNPricing)}`;
   const appHostingPricing = appHostingPricingForUsers(data.numOfUsers);
   // @ts-ignore
-  document.querySelector(
-    "#app-hosting-pricing"
-  ).innerHTML = `${appHostingPricing}`;
+  document.querySelector("#app-hosting-pricing").innerHTML = `${Math.ceil(
+    appHostingPricing
+  )}`;
   // @ts-ignore
-  document.querySelector("#total-pricing").innerHTML = `${
+  document.querySelector("#total-pricing").innerHTML = `${Math.ceil(
     databasePricing + storagePricing + CDNPricing + appHostingPricing
-  }`;
+  )}`;
 });
